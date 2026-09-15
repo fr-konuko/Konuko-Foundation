@@ -25,6 +25,22 @@ type SiteSettings = {
   email?: string
   phone?: string
   donationNote?: string
+
+  heroTitle?: string
+  heroText?: string
+  heroImageUrl?: string
+
+  purposeTitle?: string
+
+  featureTitle?: string
+  featureText?: string
+  featureImageUrl?: string
+
+  impactTitle?: string
+  impactText?: string
+
+  ctaTitle?: string
+  ctaText?: string
 }
 
 export default async function Home() {
@@ -50,14 +66,58 @@ export default async function Home() {
     settings?.mission ||
     'Expanding access to education, technology and opportunity.'
 
+  const heroTitle =
+    settings?.heroTitle ||
+    'Opening doors through education and technology.'
+
+  const heroText =
+    settings?.heroText ||
+    'We help children and local learners access school support, the internet and the technology they need to learn, grow and participate in a digital world.'
+
+  const heroImage =
+    settings?.heroImageUrl ||
+    'https://images.pexels.com/photos/34162714/pexels-photo-34162714.jpeg?auto=compress&cs=tinysrgb&w=1800'
+
+  const purposeTitle =
+    settings?.purposeTitle ||
+    "Opportunity should not depend on a family's financial circumstances."
+
+  const featureTitle =
+    settings?.featureTitle ||
+    'A connected learner has a wider classroom.'
+
+  const featureText =
+    settings?.featureText ||
+    'Internet and device access can unlock research, applications, digital learning, skills development and exposure to opportunities far beyond the local community.'
+
+  const featureImage =
+    settings?.featureImageUrl ||
+    'https://images.pexels.com/photos/5940714/pexels-photo-5940714.jpeg?auto=compress&cs=tinysrgb&w=1600'
+
+  const impactTitle =
+    settings?.impactTitle ||
+    'Impact we can explain, not just claim.'
+
+  const impactText =
+    settings?.impactText ||
+    'As projects launch, the foundation can publish verified annual figures, project updates and downloadable reports.'
+
+  const ctaTitle =
+    settings?.ctaTitle ||
+    'Support a learner. Share a device. Build access.'
+
+  const ctaText =
+    settings?.ctaText ||
+    'Konuko Foundation is at the beginning of its journey. We welcome people and organisations who want to help build sustainable educational opportunities.'
+
   return (
     <main>
 
       {/* HERO */}
       <section className="hero">
         <Image
-          src="https://images.pexels.com/photos/34162714/pexels-photo-34162714.jpeg?auto=compress&cs=tinysrgb&w=1800"
-          alt="Students studying together"
+          src={heroImage}
+          alt="Konuko Foundation educational activities"
           fill
           priority
           className="hero-image"
@@ -70,14 +130,10 @@ export default async function Home() {
             Konuko Foundation
           </p>
 
-          <h1>
-            Opening doors through education and technology.
-          </h1>
+          <h1>{heroTitle}</h1>
 
           <p className="hero-copy">
-            We help children and local learners access school
-            support, the internet and the technology they need
-            to learn, grow and participate in a digital world.
+            {heroText}
           </p>
 
           <div className="actions">
@@ -99,7 +155,7 @@ export default async function Home() {
       </section>
 
 
-      {/* PURPOSE / MISSION */}
+      {/* PURPOSE */}
       <section className="section mission-strip">
         <div className="container two-col">
 
@@ -109,8 +165,7 @@ export default async function Home() {
             </p>
 
             <h2>
-              Opportunity should not depend on a family&apos;s
-              financial circumstances.
+              {purposeTitle}
             </h2>
           </div>
 
@@ -138,7 +193,7 @@ export default async function Home() {
       </section>
 
 
-      {/* PROGRAMS FROM SANITY */}
+      {/* PROGRAMS */}
       <section className="section soft-bg">
         <div className="container">
 
@@ -191,7 +246,6 @@ export default async function Home() {
 
                   </div>
 
-
                   <div className="program-body">
 
                     <span className="number-chip">
@@ -219,7 +273,6 @@ export default async function Home() {
           ) : (
 
             <div className="empty-programs">
-
               <h3>
                 Programs are coming soon.
               </h3>
@@ -227,11 +280,9 @@ export default async function Home() {
               <p>
                 Published programs from Sanity will appear here.
               </p>
-
             </div>
 
           )}
-
 
           <div
             style={{
@@ -263,52 +314,31 @@ export default async function Home() {
             </p>
 
             <h2>
-              Impact we can explain, not just claim.
+              {impactTitle}
             </h2>
 
             <p>
-              As projects launch, the foundation can publish
-              verified annual figures, project updates and
-              downloadable reports.
+              {impactText}
             </p>
 
           </div>
 
-
           <div className="impact-preview">
 
             <div>
-              <strong>
-                Annual
-              </strong>
-
-              <span>
-                Impact reporting
-              </span>
+              <strong>Annual</strong>
+              <span>Impact reporting</span>
             </div>
-
 
             <div>
-              <strong>
-                Open
-              </strong>
-
-              <span>
-                Project updates
-              </span>
+              <strong>Open</strong>
+              <span>Project updates</span>
             </div>
-
 
             <div>
-              <strong>
-                Clear
-              </strong>
-
-              <span>
-                Use of support
-              </span>
+              <strong>Clear</strong>
+              <span>Use of support</span>
             </div>
-
 
             <Link
               href="/reports"
@@ -323,7 +353,7 @@ export default async function Home() {
       </section>
 
 
-      {/* DIGITAL ACCESS FEATURE */}
+      {/* DIGITAL ACCESS */}
       <section className="section">
 
         <div className="container feature-row">
@@ -331,14 +361,13 @@ export default async function Home() {
           <div className="feature-image-wrap">
 
             <Image
-              src="https://images.pexels.com/photos/5940714/pexels-photo-5940714.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="A student using a laptop for learning"
+              src={featureImage}
+              alt="Learner using technology for education"
               fill
               className="cover"
             />
 
           </div>
-
 
           <div className="feature-copy">
 
@@ -347,14 +376,11 @@ export default async function Home() {
             </p>
 
             <h2>
-              A connected learner has a wider classroom.
+              {featureTitle}
             </h2>
 
             <p>
-              Internet and device access can unlock research,
-              applications, digital learning, skills development
-              and exposure to opportunities far beyond the
-              local community.
+              {featureText}
             </p>
 
             <Link
@@ -370,7 +396,7 @@ export default async function Home() {
       </section>
 
 
-      {/* CALL TO ACTION */}
+      {/* CTA */}
       <section className="section cta-section">
 
         <div className="container cta-card">
@@ -382,19 +408,15 @@ export default async function Home() {
             </p>
 
             <h2>
-              Support a learner. Share a device. Build access.
+              {ctaTitle}
             </h2>
 
           </div>
 
-
           <div>
 
             <p>
-              Konuko Foundation is at the beginning of its
-              journey. We welcome people and organisations who
-              want to help build sustainable educational
-              opportunities.
+              {ctaText}
             </p>
 
             <Link

@@ -45,6 +45,22 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     mission,
     email,
     phone,
-    donationNote
+    donationNote,
+
+    heroTitle,
+    heroText,
+    "heroImageUrl": heroImage.asset->url,
+
+    purposeTitle,
+
+    featureTitle,
+    featureText,
+    "featureImageUrl": featureImage.asset->url,
+
+    impactTitle,
+    impactText,
+
+    ctaTitle,
+    ctaText
   }
 `)
