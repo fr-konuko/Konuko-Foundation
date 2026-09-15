@@ -168,4 +168,79 @@ nav a:hover { color: var(--green); }
 .founder-card-content span {
   display: block;
   margin-bottom: 45px;
+}.programs-heading {
+  margin-bottom: 48px;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.program-card {
+  background: #ffffff;
+  border: 1px solid rgba(8, 45, 36, 0.12);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.program-photo {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.program-card-content {
+  padding: 28px;
+}
+
+.program-number {
+  display: block;
+  margin-bottom: 28px;
+  font-weight: 700;
+  color: #006b56;
+}
+
+.program-card-content h3 {
+  margin: 0 0 14px;
+  font-size: 1.65rem;
+}
+
+.program-card-content p {
+  margin: 0;
+  line-height: 1.65;
+  color: #5a6864;
+}
+
+.empty-programs {
+  padding: 48px;
+  border-radius: 24px;
+  background: #f3f0e8;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .program-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .program-photo {
+    height: 240px;
+  }
+}.program-feature-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
