@@ -62,17 +62,28 @@ export default async function AboutPage() {
           <h2>Meet the founders.</h2>
 
           <div className="founder-grid">
-            {founders.map((founder, i) => (
-              <div className="founder-card" key={founder._id}>
-                <span>{String(i + 1).padStart(2, '0')}</span>
+  {founders.map((founder, i) => (
+    <div className="founder-card" key={founder._id}>
 
-                <h3>{founder.name}</h3>
+      {founder.photoUrl && (
+        <img
+          src={founder.photoUrl}
+          alt={founder.name}
+          className="founder-photo"
+        />
+      )}
 
-                <p>{founder.role || 'Co-founder'}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="founder-card-content">
+        <span>{String(i + 1).padStart(2, '0')}</span>
+
+        <h3>{founder.name}</h3>
+
+        <p>{founder.role || 'Co-founder'}</p>
+      </div>
+
+    </div>
+  ))}
+</div>
       </section>
 
       <section className="section">
