@@ -64,3 +64,13 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     ctaText
   }
 `)
+export const IMPACT_STATISTICS_QUERY = defineQuery(`
+  *[_type == "impactStatistic" && active != false]
+  | order(order asc) {
+    _id,
+    value,
+    label,
+    description,
+    order
+  }
+`)
