@@ -1,11 +1,12 @@
 import { defineQuery } from 'next-sanity'
 
 export const PROGRAMS_QUERY = defineQuery(`
-  *[_type == "program" && active == true] | order(order asc) {
+  *[_type == "program" && active != false] | order(order asc) {
     _id,
     title,
-    "slug": slug.current,
+    slug,
     summary,
+    order,
     "imageUrl": image.asset->url
   }
 `)
