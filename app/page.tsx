@@ -5,6 +5,7 @@ import { getSanityClient } from '@/sanity/lib/client'
 import {
   PROGRAMS_QUERY,
   SITE_SETTINGS_QUERY,
+  IMPACT_STATISTICS_QUERY,
 } from '@/sanity/lib/queries'
 
 export const dynamic = 'force-dynamic'
@@ -18,6 +19,14 @@ type Program = {
   slug?: {
     current: string
   }
+}
+
+type ImpactStatistic = {
+  _id: string
+  value: string
+  label: string
+  description?: string
+  order?: number
 }
 
 type SiteSettings = {
@@ -49,6 +58,14 @@ export default async function Home() {
   const programs: Program[] = client
     ? await client.fetch(
         PROGRAMS_QUERY,
+        {},
+        { cache: 'no-store' }
+      )
+    : []
+
+  const statistics: ImpactStatistic[] = client
+    ? await client.fetch(
+        IMPACT_STATISTICS_QUERY,
         {},
         { cache: 'no-store' }
       )
@@ -170,7 +187,6 @@ export default async function Home() {
           </div>
 
           <div className="mission-copy">
-
             <p>
               {mission}
             </p>
@@ -187,8 +203,8 @@ export default async function Home() {
             >
               Read our story →
             </Link>
-
           </div>
+
         </div>
       </section>
 
@@ -198,7 +214,6 @@ export default async function Home() {
         <div className="container">
 
           <div className="section-heading">
-
             <div>
               <p className="eyebrow">
                 What we do
@@ -214,23 +229,19 @@ export default async function Home() {
               that keep learners from education, technology
               and digital opportunity.
             </p>
-
           </div>
 
 
           {programs.length > 0 ? (
-
             <div className="program-grid">
 
               {programs.map((program, index) => (
-
                 <article
                   className="program-card"
                   key={program._id}
                 >
 
                   <div className="program-image">
-
                     {program.imageUrl && (
                       <img
                         src={program.imageUrl}
@@ -243,7 +254,6 @@ export default async function Home() {
                         }}
                       />
                     )}
-
                   </div>
 
                   <div className="program-body">
@@ -263,15 +273,11 @@ export default async function Home() {
                     )}
 
                   </div>
-
                 </article>
-
               ))}
 
             </div>
-
           ) : (
-
             <div className="empty-programs">
               <h3>
                 Programs are coming soon.
@@ -281,7 +287,6 @@ export default async function Home() {
                 Published programs from Sanity will appear here.
               </p>
             </div>
-
           )}
 
           <div
@@ -308,7 +313,6 @@ export default async function Home() {
         <div className="container impact-layout">
 
           <div>
-
             <p className="eyebrow light">
               Growing responsibly
             </p>
@@ -320,31 +324,47 @@ export default async function Home() {
             <p>
               {impactText}
             </p>
-
           </div>
+
 
           <div className="impact-preview">
 
-            <div>
-              <strong>Annual</strong>
-              <span>Impact reporting</span>
-            </div>
+            {statistics.length > 0 ? (
+              statistics.map((stat) => (
+                <div key={stat._id}>
+                  <strong>
+                    {stat.value}
+                  </strong>
 
-            <div>
-              <strong>Open</strong>
-              <span>Project updates</span>
-            </div>
+                  <span>
+                    {stat.label}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <>
+                <div>
+                  <strong>Annual</strong>
+                  <span>Impact reporting</span>
+                </div>
 
-            <div>
-              <strong>Clear</strong>
-              <span>Use of support</span>
-            </div>
+                <div>
+                  <strong>Open</strong>
+                  <span>Project updates</span>
+                </div>
+
+                <div>
+                  <strong>Clear</strong>
+                  <span>Use of support</span>
+                </div>
+              </>
+            )}
 
             <Link
-              href="/reports"
+              href="/impact"
               className="button button-light"
             >
-              View annual reports
+              View our impact
             </Link>
 
           </div>
@@ -359,14 +379,12 @@ export default async function Home() {
         <div className="container feature-row">
 
           <div className="feature-image-wrap">
-
             <Image
               src={featureImage}
               alt="Learner using technology for education"
               fill
               className="cover"
             />
-
           </div>
 
           <div className="feature-copy">
@@ -402,7 +420,6 @@ export default async function Home() {
         <div className="container cta-card">
 
           <div>
-
             <p className="eyebrow light">
               Be part of the work
             </p>
@@ -410,11 +427,9 @@ export default async function Home() {
             <h2>
               {ctaTitle}
             </h2>
-
           </div>
 
           <div>
-
             <p>
               {ctaText}
             </p>
@@ -425,7 +440,6 @@ export default async function Home() {
             >
               Ways to get involved
             </Link>
-
           </div>
 
         </div>
