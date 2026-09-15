@@ -2,7 +2,9 @@ import { PageHero } from '@/components/PageHero'
 import { getSanityClient } from '@/sanity/lib/client'
 import { FOUNDERS_QUERY } from '@/sanity/lib/queries'
 
-export const metadata = { title: 'About Us' }
+export const metadata = {
+  title: 'About Us',
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -24,16 +26,19 @@ export default async function AboutPage() {
 
   return (
     <main>
+      {/* ABOUT HERO */}
       <PageHero
         eyebrow="About us"
         title="A family idea built around shared responsibility."
         intro="Konuko Foundation was formed by a family committed to turning access to education and technology into practical opportunities for children and local communities."
       />
 
+      {/* MISSION */}
       <section className="section">
         <div className="container two-col align-start">
           <div>
             <p className="eyebrow">Our mission</p>
+
             <h2>
               Expand access to education, technology and digital opportunity.
             </h2>
@@ -55,6 +60,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      {/* FOUNDERS */}
       <section className="section soft-bg">
         <div className="container">
           <p className="eyebrow">Founders</p>
@@ -62,36 +68,42 @@ export default async function AboutPage() {
           <h2>Meet the founders.</h2>
 
           <div className="founder-grid">
-  {founders.map((founder, i) => (
-    <div className="founder-card" key={founder._id}>
+            {founders.map((founder, i) => (
+              <div className="founder-card" key={founder._id}>
+                {founder.photoUrl && (
+                  <img
+                    src={founder.photoUrl}
+                    alt={founder.name}
+                    className="founder-photo"
+                  />
+                )}
 
-      {founder.photoUrl && (
-        <img
-          src={founder.photoUrl}
-          alt={founder.name}
-          className="founder-photo"
-        />
-      )}
+                <div className="founder-card-content">
+                  <span>{String(i + 1).padStart(2, '0')}</span>
 
-      <div className="founder-card-content">
-        <span>{String(i + 1).padStart(2, '0')}</span>
+                  <h3>{founder.name}</h3>
 
-        <h3>{founder.name}</h3>
+                  <p>{founder.role || 'Co-Founder'}</p>
 
-        <p>{founder.role || 'Co-founder'}</p>
-      </div>
-
-    </div>
-  ))}
-</div>
+                  {founder.bio && (
+                    <p className="founder-bio">{founder.bio}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
+      {/* VALUES */}
       <section className="section">
         <div className="container values-grid">
           <div>
             <span>01</span>
             <h3>Dignity</h3>
-            <p>Support should respect the learner, family and community.</p>
+            <p>
+              Support should respect the learner, family and community.
+            </p>
           </div>
 
           <div>
