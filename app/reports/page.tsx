@@ -4,6 +4,8 @@ import { REPORTS_QUERY } from '@/sanity/lib/queries'
 
 type Report = { _id: string; title: string; year: number; summary?: string; fileUrl?: string }
 
+export const dynamic = 'force-dynamic'
+
 async function getReports(): Promise<Report[]> {
   const client = getSanityClient()
   if (!client) return []

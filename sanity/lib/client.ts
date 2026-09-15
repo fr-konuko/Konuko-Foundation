@@ -3,5 +3,5 @@ import { apiVersion, dataset, projectId } from '../env'
 
 export function getSanityClient() {
   if (!projectId) return null
-  return createClient({ projectId, dataset, apiVersion, useCdn: true })
+  return createClient({ projectId, dataset, apiVersion, useCdn: false })
 }
