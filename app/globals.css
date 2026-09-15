@@ -304,4 +304,9 @@ nav a:hover { color: var(--green); }
   .impact-story-grid {
     grid-template-columns: 1fr;
   }
+}.donation-note {
+  max-width: 720px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+  color: #5a6864;
 }
