@@ -40,3 +40,11 @@ export const IMPACT_STORIES_QUERY = defineQuery(`
     "imageUrl": image.asset->url
   }
 `)
+export const SITE_SETTINGS_QUERY = defineQuery(`
+  *[_type == "siteSettings"][0] {
+    mission,
+    email,
+    phone,
+    donationNote
+  }
+`)
