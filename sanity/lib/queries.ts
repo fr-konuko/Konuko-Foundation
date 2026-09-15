@@ -30,3 +30,13 @@ export const FOUNDERS_QUERY = defineQuery(`
     "photoUrl": photo.asset->url
   }
 `)
+export const IMPACT_STORIES_QUERY = defineQuery(`
+  *[_type == "story"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    summary,
+    publishedAt,
+    "imageUrl": image.asset->url
+  }
+`)
