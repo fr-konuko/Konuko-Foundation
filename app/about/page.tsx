@@ -6,7 +6,7 @@ export const metadata = {
   title: 'About Us',
 }
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 type Founder = {
   _id: string

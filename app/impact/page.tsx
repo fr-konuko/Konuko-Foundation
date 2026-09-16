@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Our Impact',
 }
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 type ImpactStory = {
   _id: string

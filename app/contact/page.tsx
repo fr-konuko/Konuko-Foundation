@@ -1,4 +1,5 @@
 import { PageHero } from '@/components/PageHero'
+import { getSafeEmail, getSafePhone } from '@/lib/contact'
 import { getSanityClient } from '@/sanity/lib/client'
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries'
 
@@ -6,7 +7,7 @@ export const metadata = {
   title: 'Contact',
 }
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 type SiteSettings = {
   mission?: string
@@ -22,8 +23,8 @@ export default async function ContactPage() {
     ? await client.fetch(SITE_SETTINGS_QUERY)
     : null
 
-  const email = settings?.email || 'hello@konukofoundation.org'
-  const phone = settings?.phone
+  const email = getSafeEmail(settings?.email)
+  const phone = getSafePhone(settings?.phone)
 
   return (
     <main>

@@ -8,7 +8,7 @@ import {
   IMPACT_STATISTICS_QUERY,
 } from '@/sanity/lib/queries'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 type Program = {
   _id: string
@@ -59,7 +59,7 @@ export default async function Home() {
     ? await client.fetch(
         PROGRAMS_QUERY,
         {},
-        { cache: 'no-store' }
+          { next: { revalidate: 60 } }
       )
     : []
 
@@ -67,7 +67,7 @@ export default async function Home() {
     ? await client.fetch(
         IMPACT_STATISTICS_QUERY,
         {},
-        { cache: 'no-store' }
+          { next: { revalidate: 60 } }
       )
     : []
 
@@ -75,7 +75,7 @@ export default async function Home() {
     ? await client.fetch(
         SITE_SETTINGS_QUERY,
         {},
-        { cache: 'no-store' }
+          { next: { revalidate: 60 } }
       )
     : null
 

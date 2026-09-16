@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
+import { getSafeEmail, getSafePhone } from '@/lib/contact'
 import { getSanityClient } from '@/sanity/lib/client'
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries'
 
@@ -17,7 +18,7 @@ export async function Footer() {
     ? await client.fetch(
         SITE_SETTINGS_QUERY,
         {},
-        { cache: 'no-store' }
+        { next: { revalidate: 60 } }
       )
     : null
 
@@ -25,11 +26,9 @@ export async function Footer() {
     settings?.mission ||
     'Expanding access to education, technology and opportunity.'
 
-  const email =
-    settings?.email ||
-    'hello@konukofoundation.org'
+  const email = getSafeEmail(settings?.email)
 
-  const phone = settings?.phone
+  const phone = getSafePhone(settings?.phone)
 
   return (
     <footer className="site-footer">

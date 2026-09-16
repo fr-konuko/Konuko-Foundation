@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Programs',
 }
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 type Program = {
   _id: string
