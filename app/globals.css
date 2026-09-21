@@ -6,10 +6,30 @@
   --lime: #c6df78;
   --cream: #f5f1e8;
   --paper: #fffdf8;
+  --card: #ffffff;
   --line: #dde2dc;
   --white: #ffffff;
+  --header-bg: rgba(255,253,248,.94);
+  --footer-bg: #0b1e18;
   --shadow: 0 18px 50px rgba(16, 43, 34, .10);
   --font-sans: var(--font-inter), sans-serif;
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --ink: #edf5f1;
+  --muted: #a7b7b1;
+  --green: #7dd9b6;
+  --green-dark: #c6f5dd;
+  --lime: #d5eb7a;
+  --cream: #162a26;
+  --paper: #0b1715;
+  --card: #11231f;
+  --line: rgba(208,222,217,.12);
+  --white: #1b2d29;
+  --header-bg: rgba(11,23,21,.88);
+  --footer-bg: #081412;
+  --shadow: 0 20px 55px rgba(1, 12, 10, .52);
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -59,8 +79,9 @@ h3 { font-size: 1.5rem; }
 .brand-copy { display: grid; line-height: 1; }
 .brand-copy strong { font-size: 1.05rem; }
 .brand-copy small { margin-top: 4px; color: var(--muted); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; }
-.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,253,248,.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(20,35,31,.08); }
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--header-bg); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(20,35,31,.08); }
 .nav-wrap { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
 .desktop-nav {
   display: flex;
   gap: 25px;
@@ -69,13 +90,27 @@ h3 { font-size: 1.5rem; }
   font-family: var(--font-sans);
 }
 .desktop-nav a:hover { color: var(--green); }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
 
 .mobile-menu { display: none; position: relative; }
 .mobile-menu-button {
   width: 46px;
   height: 46px;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,.85);
+  background: var(--card);
   border-radius: 12px;
   display: grid;
   place-items: center;
@@ -124,7 +159,7 @@ h3 { font-size: 1.5rem; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 44px; }
 .section-heading > p { max-width: 430px; color: var(--muted); }
 .program-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-.program-card { background: white; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: 0 8px 28px rgba(20,35,31,.05); }
+.program-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: 0 8px 28px rgba(20,35,31,.05); }
 .program-image { height: 230px; position: relative; }
 .program-body { padding: 28px; }
 .number-chip { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--cream); color: var(--green); font-weight: 900; margin-bottom: 22px; }
@@ -146,7 +181,7 @@ h3 { font-size: 1.5rem; }
 .page-hero h1 { font-size: clamp(3rem,6vw,5.6rem); margin-bottom: 28px; }
 .prose { font-size: 1.14rem; color: var(--muted); }
 .founder-grid { margin-top: 42px; display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
-.founder-card { padding: 28px 22px; background: white; border-radius: 18px; border: 1px solid var(--line); min-height: 190px; }
+.founder-card { padding: 28px 22px; background: var(--card); border-radius: 18px; border: 1px solid var(--line); min-height: 190px; }
 .founder-card span, .values-grid span, .action-grid span { color: var(--green); font-weight: 900; font-size: .8rem; }
 .founder-card h3 { margin: 35px 0 6px; }
 .founder-card p { color: var(--muted); }
@@ -157,7 +192,7 @@ h3 { font-size: 1.5rem; }
 .program-feature:nth-child(even) .program-feature-image { order: 2; }
 .program-feature-image { min-height: 430px; position: relative; overflow: hidden; border-radius: 24px; }
 .metric-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
-.metric-card { padding: 34px; border: 1px solid var(--line); border-radius: 20px; background: white; }
+.metric-card { padding: 34px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); }
 .metric-card strong { display: block; font-size: 3rem; color: var(--green); }
 .metric-card span { color: var(--muted); }
 .report-list { display: grid; gap: 0; }
@@ -166,7 +201,7 @@ h3 { font-size: 1.5rem; }
 .empty-state { padding: 60px; border-radius: 28px; background: var(--cream); text-align: center; max-width: 800px; margin: 0 auto; }
 .empty-state span { color: var(--green); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; }
 .action-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
-.action-grid article { padding: 38px; border: 1px solid var(--line); border-radius: 22px; background: white; }
+.action-grid article { padding: 38px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); }
 .center-cta { padding-top: 70px; text-align: center; }
 .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: start; }
 .contact-card { background: var(--green-dark); color: white; border-radius: 24px; padding: 40px; }
@@ -174,7 +209,7 @@ h3 { font-size: 1.5rem; }
 .contact-form { display: grid; gap: 18px; }
 .contact-form label { display: grid; gap: 8px; font-weight: 800; font-size: .9rem; }
 .contact-form input, .contact-form select, .contact-form textarea { width: 100%; border: 1px solid #ccd4cf; border-radius: 12px; padding: 13px 14px; background: white; font: inherit; }
-.site-footer { background: #0b1e18; color: white; padding: 70px 0 24px; }
+.site-footer { background: var(--footer-bg); color: white; padding: 70px 0 24px; }
 .site-footer .brand-mark { background: var(--lime); color: var(--green-dark); }
 .site-footer .brand-copy small, .footer-note, .site-footer a { color: rgba(255,255,255,.68); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
@@ -311,7 +346,7 @@ h3 { font-size: 1.5rem; }
 }
 
 .impact-story-card {
-  background: #ffffff;
+  background: var(--card);
   border: 1px solid rgba(8, 45, 36, 0.12);
   border-radius: 24px;
   overflow: hidden;

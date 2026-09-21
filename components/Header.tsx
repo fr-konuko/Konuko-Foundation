@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Logo } from './Logo'
 
 const links = [
@@ -14,6 +14,21 @@ const links = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const nextTheme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light'
+
+    setTheme(nextTheme)
+    document.documentElement.setAttribute('data-theme', nextTheme)
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
 
   return (
     <header className="site-header">
@@ -28,9 +43,21 @@ export function Header() {
           ))}
         </nav>
 
-        <Link href="/contact" className="button button-small desktop-contact">
-          Contact
-        </Link>
+        <div className="header-actions">
+          <button
+            type="button"
+            className="theme-toggle"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+          >
+            <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+            <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+          </button>
+
+          <Link href="/contact" className="button button-small desktop-contact">
+            Contact
+          </Link>
+        </div>
 
         <div className="mobile-menu">
           <button
