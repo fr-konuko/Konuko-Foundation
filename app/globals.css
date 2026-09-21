@@ -17,14 +17,14 @@
 }
 :root[data-theme='dark'] {
   --ink: #edf5f1;
-  --muted: #a7b7b1;
-  --green: #7dd9b6;
-  --green-dark: #c6f5dd;
+  --muted: #d6e7e1;
+  --green: #8fe3c1;
+  --green-dark: #dffaf0;
   --lime: #d5eb7a;
   --cream: #162a26;
   --paper: #0b1715;
   --card: #11231f;
-  --line: rgba(208,222,217,.12);
+  --line: rgba(208,222,217,.18);
   --white: #1b2d29;
   --header-bg: rgba(11,23,21,.88);
   --footer-bg: #081412;
@@ -197,7 +197,7 @@ h3 { font-size: 1.5rem; }
 .metric-card span { color: var(--muted); }
 .report-list { display: grid; gap: 0; }
 .report-row { display: grid; grid-template-columns: 120px 1fr auto; gap: 32px; align-items: center; padding: 32px 0; border-bottom: 1px solid var(--line); }
-.report-year { font-size: 2rem; font-weight: 900; color: var(--green); }
+.report-year { font-size: 1rem; font-weight: 900; color: var(--green); }
 .empty-state { padding: 60px; border-radius: 28px; background: var(--cream); text-align: center; max-width: 800px; margin: 0 auto; }
 .empty-state span { color: var(--green); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; }
 .action-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }

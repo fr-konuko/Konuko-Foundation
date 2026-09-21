@@ -44,6 +44,10 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
+          <Link href="/contact" className="button button-small desktop-contact">
+            Contact
+          </Link>
+
           <button
             type="button"
             className="theme-toggle"
@@ -53,10 +57,6 @@ export function Header() {
             <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
             <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
           </button>
-
-          <Link href="/contact" className="button button-small desktop-contact">
-            Contact
-          </Link>
         </div>
 
         <div className="mobile-menu">
