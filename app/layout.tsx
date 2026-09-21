@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Lora } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
-const lora = Lora({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-lora',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={lora.variable}>
+    <html lang="en" className={inter.variable}>
+      <body>
         <Header />
         {children}
         <Footer />
