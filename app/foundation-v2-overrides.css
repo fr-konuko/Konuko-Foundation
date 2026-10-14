@@ -16,7 +16,7 @@
 .v2-mobile-navigation { display: none; }
 .site-header .brand-logo {
   display: block;
-  width: 215px;
+  width: 161.25px;
   height: auto;
 }
 .team-avatar {
@@ -33,7 +33,7 @@
 .footer .brand { display: inline-flex; color: white; }
 .footer .brand-logo {
   display: block;
-  width: 220px;
+  width: 165px;
   height: auto;
   padding: 5px;
   border-radius: 6px;
@@ -196,7 +196,7 @@
 }
 
 @media (max-width: 900px) {
-  .site-header .brand-logo { width: 170px; }
+  .site-header .brand-logo { width: 127.5px; }
   .desktop-navigation { display: none !important; }
   .site-header .nav-donate { display: none; }
   .v2-menu-toggle { display: block; margin-left: auto; }
@@ -260,4 +260,10 @@
   .reach-grid { grid-template-columns: 1fr; }
   .reach-grid > * { min-width: 0; }
   .mini-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Halve the vertical space around the stacked ribbon logo. */
+.site-header .nav-wrap { height: 100px; }
+@media (max-width: 900px) {
+  .site-header .nav-wrap { height: 82px; }
 }

@@ -23,11 +23,11 @@ export function Header() {
       <div className="nav-wrap">
         <Link href="/" className="brand" aria-label="Konuko Foundation home">
           <Image
-            src="/images/konuko-foundation-logo.png"
+            src="/images/konuko-foundation-ribbon-logo.png"
             alt="Konuko Foundation"
-            width={2172}
-            height={724}
-            sizes="(max-width: 900px) 170px, 215px"
+            width={1774}
+            height={887}
+            sizes="(max-width: 900px) 127.5px, 161.25px"
             priority
             className="brand-logo"
           />
