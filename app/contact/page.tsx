@@ -1,3 +1,4 @@
+import { ContactForm } from '@/components/ContactForm'
 import CTA from '@/components/CTA'
 import { PageHero } from '@/components/PageHero'
 import { getSafeEmail, getSafePhone } from '@/lib/contact'
@@ -32,22 +33,7 @@ export default async function ContactPage() {
         <div className="container contact-grid">
           <div>
             <h2>Send a Message</h2>
-            <form className="contact-form" action={`mailto:${email}`} method="post" encType="text/plain">
-              <label>Full Name<input name="name" placeholder="Your name" required /></label>
-              <label>Email<input name="email" type="email" placeholder="you@example.com" required /></label>
-              <label>
-                Subject
-                <select name="subject">
-                  <option>General Inquiry</option>
-                  <option>Partnership</option>
-                  <option>Volunteer</option>
-                  <option>Donation</option>
-                  <option>Program Inquiry</option>
-                </select>
-              </label>
-              <label>Message<textarea name="message" rows={6} placeholder="Your message here..." required /></label>
-              <button className="btn btn-primary" type="submit">Send Message →</button>
-            </form>
+            <ContactForm />
           </div>
           <aside>
             <h2>Contact Information</h2>
