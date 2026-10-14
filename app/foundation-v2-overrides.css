@@ -90,6 +90,14 @@
 .about-page .values-grid > .soft-card { border: 1px solid var(--line); }
 .donate-hero h1,
 .cta h2 { color: white; }
+.hero { height: auto; }
+.hero-overlay {
+  position: relative;
+  inset: auto;
+  display: flex;
+  align-items: center;
+}
+.hero-content { padding: 110px 0 40px; }
 
 @media (max-width: 900px) {
   .desktop-navigation { display: none !important; }
