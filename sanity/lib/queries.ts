@@ -34,8 +34,26 @@ export const IMPACT_STORIES_QUERY = defineQuery(`
   *[_type == "story"] | order(publishedAt desc) {
     _id,
     title,
-    slug,
+    "slug": slug.current,
+    personName,
+    age,
+    location,
     summary,
+    fullStory,
+    publishedAt,
+    "imageUrl": image.asset->url
+  }
+`)
+export const STORY_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "story" && (slug.current == $slug || _id == $slug)][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    personName,
+    age,
+    location,
+    summary,
+    fullStory,
     publishedAt,
     "imageUrl": image.asset->url
   }

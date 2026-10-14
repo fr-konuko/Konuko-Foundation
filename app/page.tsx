@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import CTA from '@/components/CTA'
-import { impactStats as referenceStats, programs as referencePrograms, stories as referenceStories } from '@/data/site'
+import { StoryCard, type StoryCardData } from '@/components/StoryCard'
+import { impactStats as referenceStats, programs as referencePrograms } from '@/data/site'
 import { getSanityClient } from '@/sanity/lib/client'
 import {
   IMPACT_STATISTICS_QUERY,
@@ -25,14 +26,6 @@ type ImpactStatistic = {
   description?: string
 }
 
-type ImpactStory = {
-  _id: string
-  title: string
-  summary?: string
-  imageUrl?: string
-  publishedAt?: string
-}
-
 type SiteSettings = {
   heroTitle?: string
   heroText?: string
@@ -51,7 +44,7 @@ export default async function Home() {
     ? await Promise.all([
         client.fetch<Program[]>(PROGRAMS_QUERY, {}, { next: { revalidate: 60 } }),
         client.fetch<ImpactStatistic[]>(IMPACT_STATISTICS_QUERY, {}, { next: { revalidate: 60 } }),
-        client.fetch<ImpactStory[]>(IMPACT_STORIES_QUERY, {}, { next: { revalidate: 60 } }),
+        client.fetch<StoryCardData[]>(IMPACT_STORIES_QUERY, {}, { next: { revalidate: 60 } }),
         client.fetch<SiteSettings | null>(SITE_SETTINGS_QUERY, {}, { next: { revalidate: 60 } }),
       ])
     : [[], [], [], null]
@@ -71,16 +64,6 @@ export default async function Home() {
   const displayedStats = statistics.length
     ? statistics.map((stat) => [stat.value, stat.label, stat.description || 'Across our programs'] as const)
     : referenceStats
-  const stories = sanityStories.length
-    ? sanityStories.map((story) => ({
-        key: story._id,
-        name: story.title,
-        place: '',
-        image: story.imageUrl || referenceStories[0].image,
-        text: story.summary || '',
-      }))
-    : referenceStories.map((story) => ({ ...story, key: story.name }))
-
   return (
     <>
       <section className="hero" style={{ backgroundImage: `url("${heroImage}")` }}>
@@ -154,18 +137,13 @@ export default async function Home() {
             <span className="eyebrow">● REAL STORIES</span>
             <h2>Stories of Change</h2>
           </div>
-          <div className="grid three">
-            {stories.slice(0, 3).map((story) => (
-              <article className="card story-card" key={story.key}>
-                <img src={story.image} alt="" />
-                <div className="card-body">
-                  {story.place && <span className="story-place">📍 {story.place}</span>}
-                  <h3>{story.name}</h3>
-                  <p>{story.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          {sanityStories.length ? (
+            <div className="grid three story-grid">
+              {sanityStories.slice(0, 3).map((story) => <StoryCard key={story._id} story={story} />)}
+            </div>
+          ) : (
+            <p className="story-empty">Real stories will appear here once published.</p>
+          )}
         </div>
       </section>
 
