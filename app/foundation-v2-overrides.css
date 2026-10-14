@@ -1,0 +1,119 @@
+.v2-menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+}
+.v2-menu-toggle span {
+  display: block;
+  height: 2px;
+  margin: 4px 0;
+  background: var(--brown);
+}
+.v2-mobile-navigation { display: none; }
+.team-avatar {
+  display: grid;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--orange);
+  font-size: 1.6rem;
+}
+.footer .brand { display: inline-flex; color: white; }
+.footer .brand .logo-mark { flex: 0 0 34px; }
+.footer .newsletter-form { display: flex; gap: 8px; margin-top: 16px; }
+.footer .newsletter-input {
+  min-width: 0;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px;
+  background: rgba(255,255,255,.08);
+  color: white;
+  font: inherit;
+}
+.footer .newsletter-form .btn { flex: 0 0 auto; }
+.donate-hero {
+  padding: 95px 0;
+  background: var(--brown);
+  color: white;
+}
+.donate-hero h1 { max-width: 850px; }
+.donate-hero p { max-width: 720px; color: #d8cbc4; font-size: 1.08rem; }
+.donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.donation-box { padding: 28px; border: 1px solid var(--line); border-radius: 16px; }
+.donation-box label { margin: 16px 0; }
+.amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+.amounts button {
+  padding: 12px 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: white;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.amounts button.active { border-color: var(--orange); background: #fff1ed; color: var(--orange); }
+.impact-note { margin: 16px 0; padding: 14px; border-radius: 9px; background: var(--cream); color: var(--text); }
+.donation-box .small { margin: 12px 0; font-size: .82rem; text-align: center; }
+.payment-pills { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.payment-pills span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: .78rem; }
+.trust { background: var(--soft); }
+.trust .grid { margin-top: 26px; }
+.contact-card { display: flex; gap: 16px; align-items: flex-start; margin: 14px 0; padding: 20px; border: 1px solid var(--line); border-radius: 13px; }
+.contact-card div { display: grid; gap: 4px; }
+.contact-image { width: 100%; max-height: 260px; margin-top: 20px; border-radius: 16px; object-fit: cover; }
+.contact-form { display: grid; gap: 14px; }
+.contact-form label { display: flex; flex-direction: column; gap: 7px; font-size: .84rem; font-weight: 600; }
+.contact-form input,
+.contact-form select,
+.contact-form textarea { width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 9px; background: white; font: inherit; }
+.contact-form textarea { resize: vertical; }
+.about-page { --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', sans-serif; }
+.eyebrow::before { display: none !important; }
+.page-hero::after,
+.page-hero:not(.dark)::after { display: none; }
+.page-hero .eyebrow {
+  color: var(--orange) !important;
+  border-color: #f4a28f !important;
+}
+.page-hero:not(.dark) h1 { color: var(--brown); }
+.page-hero:not(.dark) p { color: var(--muted); }
+.about-page .page-hero h1 { color: var(--brown); }
+.about-page .section.pt0 { padding-top: 0 !important; }
+.about-page .values-grid > .soft-card { border: 1px solid var(--line); }
+.donate-hero h1,
+.cta h2 { color: white; }
+
+@media (max-width: 900px) {
+  .desktop-navigation { display: none !important; }
+  .v2-menu-toggle { display: block; margin-left: auto; }
+  .site-header .v2-mobile-navigation {
+    position: absolute;
+    top: 100%;
+    right: 14px;
+    left: 14px;
+    z-index: 51;
+    display: grid;
+    gap: 0;
+    padding: 8px 16px;
+    border: 1px solid #eee;
+    border-radius: 0 0 12px 12px;
+    background: white;
+    box-shadow: 0 12px 24px rgba(45,25,16,.1);
+  }
+  .v2-mobile-navigation a { padding: 12px 4px; color: #665a53; }
+  .v2-mobile-navigation a + a { border-top: 1px solid #f2ece8; }
+  .donate-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .v2-menu-toggle { width: 38px; height: 38px; }
+  .footer .newsletter-form { flex-direction: column; }
+  .amounts { grid-template-columns: repeat(2, 1fr); }
+}
