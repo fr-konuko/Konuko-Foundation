@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getSafeEmail, getSafePhone } from '@/lib/contact'
 import { getSanityClient } from '@/sanity/lib/client'
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries'
@@ -22,8 +23,14 @@ export async function Footer() {
       <div className="container footer-grid">
         <div>
           <Link href="/" className="brand light" aria-label="Konuko Foundation home">
-            <span className="logo-mark" aria-hidden="true">K</span>
-            <span>Konuko Foundation</span>
+            <Image
+              src="/images/konuko-foundation-logo.png"
+              alt="Konuko Foundation"
+              width={2172}
+              height={724}
+              sizes="220px"
+              className="brand-logo"
+            />
           </Link>
           <p>{settings?.mission || 'Creating opportunity through education, skills and community support.'}</p>
           {email && <a href={`mailto:${email}`}>{email}</a>}

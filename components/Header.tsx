@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -21,8 +22,15 @@ export function Header() {
     <header className="site-header">
       <div className="nav-wrap">
         <Link href="/" className="brand" aria-label="Konuko Foundation home">
-          <span className="logo-mark" aria-hidden="true">K</span>
-          <span>Konuko Foundation</span>
+          <Image
+            src="/images/konuko-foundation-logo.png"
+            alt="Konuko Foundation"
+            width={2172}
+            height={724}
+            sizes="(max-width: 900px) 170px, 215px"
+            priority
+            className="brand-logo"
+          />
         </Link>
         <nav aria-label="Main navigation" className="desktop-navigation">
           {links.map(([label, href]) => (
