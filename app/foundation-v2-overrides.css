@@ -134,7 +134,7 @@
   .amounts { grid-template-columns: repeat(2, 1fr); }
   .hero { min-height: 320px; }
   .hero-overlay { min-height: 0; }
-  .hero .container { width: min(100% - 38px, var(--max)); }
+  .hero .container { width: 82%; max-width: none; }
   .hero-content { padding: 30px 0 18px; }
   .hero-content > .eyebrow {
     margin-bottom: 10px;
