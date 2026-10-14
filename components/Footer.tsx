@@ -24,10 +24,10 @@ export async function Footer() {
         <div>
           <Link href="/" className="brand light" aria-label="Konuko Foundation home">
             <Image
-              src="/images/konuko-foundation-ribbon-logo.png"
+              src="/images/konuko-foundation-unity-logo.png"
               alt="Konuko Foundation"
-              width={1774}
-              height={887}
+              width={1976}
+              height={796}
               sizes="165px"
               className="brand-logo"
             />
