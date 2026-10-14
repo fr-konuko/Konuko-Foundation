@@ -78,7 +78,7 @@
 .payment-pills span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: .78rem; }
 .trust { background: var(--soft); }
 .trust .grid { margin-top: 26px; }
-.contact-card { display: flex; gap: 16px; align-items: flex-start; margin: 14px 0; padding: 20px; border: 1px solid var(--line); border-radius: 13px; }
+.contact-card { color: var(--text); display: flex; gap: 16px; align-items: flex-start; margin: 14px 0; padding: 20px; border: 1px solid var(--line); border-radius: 13px; }
 .contact-card div { display: grid; gap: 4px; }
 .contact-image { width: 100%; max-height: 260px; margin-top: 20px; border-radius: 16px; object-fit: cover; }
 .contact-form { display: grid; gap: 14px; }
