@@ -1,16 +1,16 @@
-type Props = {
-  eyebrow: string
+type PageHeroProps = {
+  eyebrow?: string
   title: string
-  intro: string
+  intro?: string
 }
 
-export function PageHero({ eyebrow, title, intro }: Props) {
+export function PageHero({ eyebrow, title, intro }: PageHeroProps) {
   return (
     <section className="page-hero">
-      <div className="container narrow">
-        <p className="eyebrow">{eyebrow}</p>
+      <div className="container">
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
-        <p className="lead">{intro}</p>
+        {intro && <p>{intro}</p>}
       </div>
     </section>
   )
