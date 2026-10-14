@@ -109,6 +109,7 @@
 
 @media (max-width: 900px) {
   .desktop-navigation { display: none !important; }
+  .site-header .nav-donate { display: none; }
   .v2-menu-toggle { display: block; margin-left: auto; }
   .site-header .v2-mobile-navigation {
     position: absolute;
