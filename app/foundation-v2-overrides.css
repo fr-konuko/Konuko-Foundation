@@ -98,7 +98,14 @@
   align-items: center;
   width: 100%;
 }
-.hero-content { padding: 110px 0 40px; }
+.hero-content {
+  max-width: 1000px;
+  padding: 110px 0 40px;
+}
+.hero-stats {
+  width: 100%;
+  max-width: none;
+}
 
 @media (max-width: 900px) {
   .desktop-navigation { display: none !important; }
