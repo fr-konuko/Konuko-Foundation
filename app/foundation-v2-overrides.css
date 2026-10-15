@@ -14,6 +14,7 @@
   background: var(--brown);
 }
 .v2-mobile-navigation { display: none; }
+.site-header nav a { font-weight: 700; }
 .site-header .brand-logo,
 .footer .brand-logo {
   display: block;

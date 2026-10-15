@@ -34,6 +34,7 @@ export default function VolunteerPage() {
   return (
     <>
       <PageHero
+        narrow={false}
         eyebrow="GET INVOLVED"
         title="Volunteer With Us"
         intro="Join a growing community of volunteers helping Konuko Foundation create practical opportunities for learners and communities."
