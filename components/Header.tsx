@@ -10,7 +10,7 @@ const links = [
   ['About', '/about'],
   ['Volunteer', '/volunteer'],
   ['Gallery', '/gallery'],
-  ['Transparency', '/transparency'],
+  ['Publications', '/publications'],
   ['Contact', '/contact'],
 ]
 

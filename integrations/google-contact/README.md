@@ -12,3 +12,5 @@ The public form URL is https://docs.google.com/forms/d/e/1FAIpQLSdXPz1hl4hpoyJAs
 The question IDs in Code.gs were read from this form. Update them if questions are deleted and recreated.
 To store responses in Sheets, link a spreadsheet from the form's Responses tab.
 No test response has been submitted automatically.
+
+Security update: redeploy the updated Code.gs as a new version of the existing web app deployment (keep the same URL and CONTACT_SECRET). It adds an atomic, persistent limit of 30 authenticated requests per minute across all website instances. The website also limits requests per process and sender; those local limits alone do not span serverless instances. Existing form question IDs and submitted fields are unchanged.

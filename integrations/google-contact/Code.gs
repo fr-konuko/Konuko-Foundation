@@ -11,10 +11,24 @@ function setup() {
 function doPost(e) {
   let result = { ok: false };
   try {
+    if (!e || !e.postData || e.postData.contents.length > 32768) throw new Error('Invalid body');
     const data = JSON.parse(e.postData.contents);
     const properties = PropertiesService.getScriptProperties();
     const secret = properties.getProperty('CONTACT_SECRET');
     if (!secret || data.secret !== secret) throw new Error('Unauthorized');
+    // Persistent quota shared by every website/server instance. Serialize updates.
+    const lock = LockService.getScriptLock();
+    if (!lock.tryLock(3000)) throw new Error('RATE_LIMITED');
+    try {
+      const now = Date.now();
+      let quota = JSON.parse(properties.getProperty('CONTACT_QUOTA') || 'null');
+      if (!quota || now >= quota.expires) quota = { count: 0, expires: now + 60000 };
+      if (quota.count >= 30) throw new Error('RATE_LIMITED');
+      quota.count += 1;
+      properties.setProperty('CONTACT_QUOTA', JSON.stringify(quota));
+    } finally {
+      lock.releaseLock();
+    }
     const form = FormApp.openById(properties.getProperty('CONTACT_FORM_ID'));
     if (!form.isAcceptingResponses()) throw new Error('Form is closed');
     const fields = [
@@ -36,7 +50,7 @@ function doPost(e) {
     response.submit();
     result = { ok: true };
   } catch (error) {
-    result = { ok: false };
+    result = { ok: false, rateLimited: error.message === 'RATE_LIMITED' };
   }
   return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
 }

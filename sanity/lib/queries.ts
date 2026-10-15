@@ -27,7 +27,7 @@ export const REPORTS_QUERY = defineQuery(`
     title,
     year,
     summary,
-    "fileUrl": reportFile.asset->url
+    "fileUrl": select(reportFile.asset->mimeType == "application/pdf" => reportFile.asset->url)
   }
 `)
 export const FOUNDERS_QUERY = defineQuery(`

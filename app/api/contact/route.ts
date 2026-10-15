@@ -1,13 +1,22 @@
+import { allowContactRequest, allowContactSender, ContactBodyError, readContactBody } from '@/lib/contact-security'
+
+function rateLimited() {
+  return Response.json({ error: 'Too many messages. Please try again later.' }, { status: 429, headers: { 'Retry-After': '600' } })
+}
+
 export async function POST(request: Request) {
   const origin = request.headers.get('origin')
   if (origin && origin !== new URL(request.url).origin) {
     return Response.json({ error: 'Invalid request origin.' }, { status: 403 })
   }
+  if (!allowContactRequest()) return rateLimited()
   let data: Record<string, unknown>
   try {
-    data = await request.json()
-    if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid body')
-  } catch {
+    const body = await readContactBody(request)
+    if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('Invalid body')
+    data = body as Record<string, unknown>
+  } catch (error) {
+    if (error instanceof ContactBodyError) return Response.json({ error: error.message }, { status: error.status })
     return Response.json({ error: 'Invalid message.' }, { status: 400 })
   }
   if (data.website) return Response.json({ error: 'Unable to send this message.' }, { status: 400 })
@@ -23,6 +32,7 @@ export async function POST(request: Request) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
     return Response.json({ error: 'Please enter a valid email address.' }, { status: 400 })
   }
+  if (!allowContactSender(fields.email)) return rateLimited()
   const endpoint = process.env.GOOGLE_CONTACT_SCRIPT_URL
   const secret = process.env.GOOGLE_CONTACT_SCRIPT_SECRET
   if (!endpoint || !secret) {
@@ -39,6 +49,7 @@ export async function POST(request: Request) {
       cache: 'no-store',
     })
     const result = await response.json()
+    if (result.rateLimited === true) return rateLimited()
     if (!response.ok || result.ok !== true) throw new Error('Submission failed')
     return Response.json({ ok: true })
   } catch {

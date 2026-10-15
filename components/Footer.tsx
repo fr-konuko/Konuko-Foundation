@@ -45,9 +45,9 @@ export async function Footer() {
         </div>
         <div>
           <h4>Resources</h4>
-          <Link href="/transparency">Transparency</Link>
+          <Link href="/publications">Publications</Link>
           <Link href="/gallery">Gallery</Link>
-          <Link href="/transparency">Reports</Link>
+          <Link href="/publications">Reports</Link>
         </div>
       </div>
       <div className="container footer-bottom">
