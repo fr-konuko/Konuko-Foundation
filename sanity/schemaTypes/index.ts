@@ -4,6 +4,7 @@ import { programType } from './program'
 import { siteSettingsType } from './siteSettings'
 import { storyType } from './story'
 import { impactStatisticType } from './impactStatistic'
+import { galleryPhotoType } from './galleryPhoto'
 
 export const schemaTypes = [
   programType,
@@ -12,4 +13,5 @@ export const schemaTypes = [
   annualReportType,
   siteSettingsType,
   impactStatisticType,
+  galleryPhotoType,
 ]

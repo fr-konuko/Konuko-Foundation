@@ -1,5 +1,15 @@
 import { defineQuery } from 'next-sanity'
 
+export const GALLERY_PHOTOS_QUERY = defineQuery(`
+  *[_type == "galleryPhoto" && defined(image.asset->url)] | order(order asc, _createdAt desc) {
+    _id,
+    title,
+    alt,
+    category,
+    "imageUrl": image.asset->url
+  }
+`)
+
 export const PROGRAMS_QUERY = defineQuery(`
   *[_type == "program" && active != false] | order(order asc) {
     _id,

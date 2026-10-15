@@ -202,6 +202,12 @@
   font-weight: 700;
 }
 .story-empty { text-align: center; }
+.gallery-empty {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--orange);
+}
 .full-story-image {
   display: block;
   width: 100%;
