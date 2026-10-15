@@ -8,6 +8,7 @@ export const founderType = defineType({
     defineField({ name: 'name', title: 'Name', type: 'string', validation: r => r.required() }),
     defineField({ name: 'role', title: 'Role', type: 'string' }),
     defineField({ name: 'bio', title: 'Short bio', type: 'text', rows: 5 }),
+    defineField({ name: 'message', title: 'Personal message', type: 'text', rows: 12, description: 'Shown when visitors select Read message on your team profile.' }),
     defineField({ name: 'photo', title: 'Photo', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'order', title: 'Display order', type: 'number', initialValue: 10 }),
   ],

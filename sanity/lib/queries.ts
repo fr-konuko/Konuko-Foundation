@@ -36,7 +36,17 @@ export const FOUNDERS_QUERY = defineQuery(`
     name,
     role,
     bio,
+    message,
     order,
+    "photoUrl": photo.asset->url
+  }
+`)
+export const FOUNDER_BY_ID_QUERY = defineQuery(`
+  *[_type == "founder" && _id == $id][0] {
+    _id,
+    name,
+    role,
+    message,
     "photoUrl": photo.asset->url
   }
 `)

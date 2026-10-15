@@ -31,6 +31,40 @@
   color: var(--orange);
   font-size: 1.6rem;
 }
+.team-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1040px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.team-row > .team-card {
+  flex: 0 0 calc((100% - 80px) / 3);
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .team-row > .team-card { flex-basis: calc((100% - 40px) / 2); }
+}
+@media (max-width: 600px) {
+  .team-row > .team-card { flex-basis: 100%; }
+}
+.team-message-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--orange);
+  font-weight: 700;
+}
+.team-message-photo {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.team-message-back { margin-top: 28px; }
 .footer { padding: 20.625px 0 7.5px; }
 .footer .footer-grid { padding-bottom: 22.5px; row-gap: 15px; }
 .footer .footer-grid > div { gap: 4.5px; }
@@ -125,6 +159,7 @@
 .about-page .page-hero h1 { color: var(--brown); }
 .about-page .section.pt0 { padding-top: 0 !important; }
 .about-page .values-grid > .soft-card { border: 1px solid var(--line); }
+.value-icon { display: block; margin-bottom: 12px; color: var(--orange); }
 .donate-hero h1,
 .cta h2 { color: white; }
 .hero { height: auto; }

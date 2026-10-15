@@ -1,4 +1,6 @@
 import CTA from '@/components/CTA'
+import Link from 'next/link'
+import { ValueIcon } from '@/components/ValueIcon'
 import { PageHero } from '@/components/PageHero'
 import { getSanityClient } from '@/sanity/lib/client'
 import { FOUNDERS_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries'
@@ -15,6 +17,7 @@ type Founder = {
   name: string
   role?: string
   bio?: string
+  message?: string
   photoUrl?: string
 }
 
@@ -76,19 +79,19 @@ export default async function AboutPage() {
           <h2>Values &amp; Vision</h2>
           <div className="grid four values-grid">
             <div className="soft-card">
-              🎯<h3>Our Mission</h3>
+              <ValueIcon name="mission" /><h3>Our Mission</h3>
               <p>{settings?.mission || 'Equip learners and communities with practical opportunities to build better futures.'}</p>
             </div>
             <div className="soft-card">
-              👁️<h3>Our Vision</h3>
+              <ValueIcon name="vision" /><h3>Our Vision</h3>
               <p>A future where every young person has the opportunity to learn, grow and participate.</p>
             </div>
             <div className="soft-card">
-              🤝<h3>Community First</h3>
+              <ValueIcon name="community" /><h3>Community First</h3>
               <p>We work with communities and partners to create solutions that last.</p>
             </div>
             <div className="soft-card">
-              📊<h3>Accountability</h3>
+              <ValueIcon name="accountability" /><h3>Accountability</h3>
               <p>We measure, learn and communicate openly about the impact of our work.</p>
             </div>
           </div>
@@ -113,6 +116,9 @@ export default async function AboutPage() {
                   <h3>{founder.name}</h3>
                   <p>{founder.role || 'Founder'}</p>
                   {founder.bio ? <p className="team-bio">{founder.bio}</p> : null}
+                  <Link className="team-message-link" href={`/team/${encodeURIComponent(founder._id)}`} aria-label={`Read message from ${founder.name}`}>
+                    Read message
+                  </Link>
                 </article>
               ))}
             </div>
