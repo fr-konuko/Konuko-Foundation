@@ -35,17 +35,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
-  max-width: 1040px;
+  gap: 24px;
+  max-width: 1160px;
   margin-right: auto;
   margin-left: auto;
 }
 .team-row > .team-card {
-  flex: 0 0 calc((100% - 80px) / 3);
+  flex: 0 0 calc((100% - 96px) / 5);
   min-width: 0;
 }
 @media (max-width: 900px) {
-  .team-row > .team-card { flex-basis: calc((100% - 40px) / 2); }
+  .team-row > .team-card { flex-basis: calc((100% - 24px) / 2); }
 }
 @media (max-width: 600px) {
   .team-row > .team-card { flex-basis: 100%; }
