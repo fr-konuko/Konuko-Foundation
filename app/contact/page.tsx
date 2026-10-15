@@ -45,12 +45,18 @@ export default async function ContactPage() {
                 📞 <div><b>Phone</b><span>{phone}</span></div>
               </div>
             )}
-            <div className="contact-card">📍 <div><b>Address</b><span>Kenya</span></div></div>
-            <img
-              className="contact-image"
-              src="https://images.unsplash.com/photo-1489493512598-d08130f49bea?auto=format&fit=crop&w=800&q=80"
-              alt="Community"
+            <div className="contact-card">📍 <div><b>Address</b><span>Rongo, Kenya</span></div></div>
+            <iframe
+              className="contact-map"
+              title="Konuko Foundation location at Konuko Homestead"
+              src="https://www.google.com/maps?q=-0.6992548,34.6279423&z=16&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
+            <a href="https://maps.app.goo.gl/YXTdTzHzd46X7mMy8" target="_blank" rel="noopener noreferrer">
+              View location on Google Maps ↗
+            </a>
           </aside>
         </div>
       </section>
