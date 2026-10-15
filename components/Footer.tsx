@@ -28,7 +28,7 @@ export async function Footer() {
               alt="Konuko Foundation"
               width={1976}
               height={796}
-              sizes="165px"
+              sizes="(max-width: 900px) 127.5px, 161.25px"
               className="brand-logo"
             />
           </Link>
