@@ -44,6 +44,13 @@
   flex: 0 0 calc((100% - 96px) / 5);
   min-width: 0;
 }
+@media (min-width: 901px) {
+  .team-row {
+    max-width: none;
+    justify-content: space-between;
+  }
+  .team-row > .team-card { flex-basis: 120px; }
+}
 @media (max-width: 900px) {
   .team-row > .team-card { flex-basis: calc((100% - 24px) / 2); }
 }
