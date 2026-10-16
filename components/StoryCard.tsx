@@ -26,7 +26,7 @@ export function StoryCard({ story }: { story: StoryCardData }) {
         {story.location && <span className="story-place">📍 {story.location}</span>}
         {story.summary && <p>{story.summary}</p>}
         <Link className="story-learn-more" href={`/stories/${encodeURIComponent(storyPath)}`}>
-          Learn more
+          Read more
         </Link>
       </div>
     </article>
