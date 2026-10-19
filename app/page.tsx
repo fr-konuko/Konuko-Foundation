@@ -1,3 +1,4 @@
+import { ProgramIcon } from '@/components/ProgramIcon'
 import Link from 'next/link'
 import CTA from '@/components/CTA'
 import { StoryCard, type StoryCardData } from '@/components/StoryCard'
@@ -102,7 +103,7 @@ export default async function Home() {
               <article className="card program-card" key={program.key}>
                 <img src={program.image} alt="" />
                 <div className="card-body">
-                  <div className="icon-chip">{program.icon}</div>
+                  <ProgramIcon title={program.title} />
                   <h3>{program.title}</h3>
                   <p>{program.text}</p>
                 </div>

@@ -1,3 +1,4 @@
+import { ProgramIcon } from '@/components/ProgramIcon'
 import Link from 'next/link'
 import { PageHero } from '@/components/PageHero'
 import { programs as referencePrograms } from '@/data/site'
@@ -44,7 +45,7 @@ export default async function ProgramsPage() {
               <article className="card program-card" key={program.key}>
                 <img src={program.image} alt="" />
                 <div className="card-body">
-                  <div className="icon-chip">{program.icon}</div>
+                  <ProgramIcon title={program.title} />
                   <h3>{program.title}</h3>
                   <p>{program.text}</p>
                   <Link className="text-link" href="/donate">Learn more →</Link>
